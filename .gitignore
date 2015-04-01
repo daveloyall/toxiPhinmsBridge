@@ -1,0 +1,8 @@
+# Don't commit bins!
+/bin/
+/target/
+
+# Ignore some Eclipse-specific stuff.
+/.settings/
+/.classpath
+/.project
