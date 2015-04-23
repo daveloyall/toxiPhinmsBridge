@@ -17,11 +17,11 @@ import org.apache.logging.log4j.LogManager;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
-public class SimpleHL7Batcher {
-	private static final Logger log = LogManager.getLogger(SimpleHL7Batcher.class);
+public class ToxiPhinmsBridge {
+	private static final Logger log = LogManager.getLogger(ToxiPhinmsBridge.class);
 
 	public static void main(String[] args) throws IOException {
-		SimpleHL7Batcher shb = new SimpleHL7Batcher();
+		ToxiPhinmsBridge shb = new ToxiPhinmsBridge();
 		JCommander jc = new JCommander(shb, args);
 		jc.setProgramName("java -jar simpleHL7Batcher.jar");
 		if (shb.run() == 42)
