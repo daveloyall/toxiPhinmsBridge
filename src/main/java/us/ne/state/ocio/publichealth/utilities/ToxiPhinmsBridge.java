@@ -23,16 +23,19 @@ public class ToxiPhinmsBridge {
 	public static void main(String[] args) throws IOException {
 		ToxiPhinmsBridge shb = new ToxiPhinmsBridge();
 		JCommander jc = new JCommander(shb, args);
-		jc.setProgramName("java -jar simpleHL7Batcher.jar");
+		jc.setProgramName("java -jar toxiPhinmsBridge.jar");
 		if (shb.run() == 42)
 			jc.usage();
 	}
 
-	@Parameter(names = "--input", description = "Input directory")
+	@Parameter(names = "--incoming", description = "PHINMS incoming directory")
 	private String input;
 
-	@Parameter(names = "--output", description = "Output directory")
-	private String output;
+	@Parameter(names = "--outgoing", description = "PHINMS outgoing directory")
+	private String outgoing;
+
+	@Parameter(names = "--output", description = "Toxicall bidirectional directory")
+	private String toxiDirectory;
 
 	@Parameter(names = "--archive", description = "Archive directory")
 	private String archive;
@@ -40,14 +43,11 @@ public class ToxiPhinmsBridge {
 	@Parameter(names = "--cooldown", description = "Ignore files modified less than [cooldown] seconds ago. (This avoids partial files.)")
 	private int coolDownInSeconds = 30;
 
-	@Parameter(names = "--batchsize", description = "Number of files per batch")
-	private int batchSize = 200;
-
 	@Parameter(names = "--help", help = true, description = "This help message.", hidden = true)
 	private boolean help;
 
 	private int run() throws IOException {
-		if (help || anyNull(input, output, archive)) {
+		if (help || anyNull(input, toxiDirectory, archive)) {
 			return 42; //magic number tells caller to display usage;
 		}
 
@@ -80,12 +80,12 @@ public class ToxiPhinmsBridge {
 			Files.move(p, archivePath.resolve(p.getFileName()));
 			inputCounter++;
 		}
-		log.debug("created {} batch files in {}.",outputCounter,output);
+		log.debug("created {} batch files in {}.",outputCounter,toxiDirectory);
 		return 0;
 	}
 
 	private Path getNewOutputFile(long batchNumber) {
-		return Paths.get(output + FileSystems.getDefault().getSeparator() + "batch." + batchNumber + ".hl7");
+		return Paths.get(toxiDirectory + FileSystems.getDefault().getSeparator() + "batch." + batchNumber + ".hl7");
 	}
 
 	private static boolean anyNull(Object... args) {
