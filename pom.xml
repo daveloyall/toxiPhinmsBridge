@@ -28,7 +28,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>us.ne.state.ocio.publichealth.utilities.SimpleHL7Batcher</mainClass>
+							<mainClass>us.ne.state.ocio.publichealth.utilities.ToxiPhinmsBridge</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
