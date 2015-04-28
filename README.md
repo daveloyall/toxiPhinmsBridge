@@ -17,7 +17,7 @@ PHINMS transfers files. ToxiCALL/ToxiTRACK are compatible with SFTP, etc, but no
 1. PCC Bridge moves the `S files` from the PCC Toxi directory to the PCC PHINMS outgoing directory.
 1. PCC PHINMS spots the `S files` and does the usual: moves them and transmits them.
 1. Sometime later, the `S files` appear in DOH PHINMS incoming directory.
-1. DOH Bridge moves those files to the DOH Toxi incoming/outgoing directory.
+1. DOH Bridge moves those `S files` from the DOH PHINMS incoming directory to the DOH Toxi incoming/outgoing directory.
 1. DOH Toxi picks 'em up, adds the data to the DOH Toxi DB, and writes out three files. (The `A files`, acknowledgement.)  PCC Toxi needs the files so it will know what not to send next time.
 1. DOH Bridge moves the `A files` into the DOH PHINMS outgoing directory.
 1. DOH PHINMS transmits those files to PCC PHINMS which writes them to the incoming directory.
