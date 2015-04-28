@@ -31,9 +31,9 @@
 							<mainClass>us.ne.state.ocio.publichealth.utilities.ToxiPhinmsBridge</mainClass>
 						</manifest>
 					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
+					<descriptors>
+						<descriptor>src/assembly/jar-with-src-and-deps.xml</descriptor>
+					</descriptors>
 				</configuration>
 			</plugin>
 		</plugins>
